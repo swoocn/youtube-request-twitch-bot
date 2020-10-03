@@ -109,24 +109,23 @@ function storeToken(token) {
 /**
  * Add playlist item to a user's playlist.
  */
-export function addToPlaylist(auth, id) {
+export async function addToPlaylist(auth, id) {
   var service = google.youtube('v3');
-  service.playlistItems.insert({
-    auth: auth,
-    part: 'snippet',
-    resource: {
-      snippet: {
-        playlistId: '[INSERT PLAYLISTID]',
-        resourceId: {
-          kind: 'youtube#video',
-          videoId: id
+  try {
+    var response = await service.playlistItems.insert({
+      auth: auth,
+      part: 'snippet',
+      resource: {
+        snippet: {
+          playlistId: 'PL3Q0ry0qcePG4XAoOf50ZC1T2ekgu6-fO',
+          resourceId: {
+            kind: 'youtube#video',
+            videoId: id
+          }
         }
       }
-    }
-  }, function(err, response) {
-    if (err) {
-      console.log('The API returned an error: ' + err);
-      return;
-    }
-  });
+    });
+  } catch (err) {
+      console.log(`The API returned the response: ${response.status}; -> ${err}`);
+  }
 }

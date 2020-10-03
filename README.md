@@ -16,7 +16,7 @@ Allow for reaction-based Twitch streamers to streamline Youtube requests to his/
 - Youtube account
 
 ## Setup
-##### Get your Twitch oAuth token to call Twitch API & configure /const.js with Twitch account info.
+#### Get your Twitch oAuth token to call Twitch API & configure /const.js with Twitch account info.
 1. Register and log into [Twitch developer console](https://dev.twitch.tv/console/apps).
 2. Select the **Applications** tab, and click **+ Register Your Application**.
 3. Enter desired app name and http://localhost as the OAuth redirect URL.  Then select Chat Bot as the app category.
