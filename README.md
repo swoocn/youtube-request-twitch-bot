@@ -41,3 +41,10 @@ Allow for reaction-based Twitch streamers to streamline YouTube requests to his/
     - ../auth/youtubepartner
     - ../auth/youtube
 12. Click **Add**, and then click **Save** to persist the scopes to the current Oauth consent.
+
+#### Authorize the bot application with YouTube API after the OAuth token and scope setup.
+1. Run the application with 'npm start' command with a supported console.
+2. Follow the commands to authorize the app by visiting the loaded Google Cloud account URL.
+3. Follow the instructions, and then copy-and-paste the generated code back into the command prompt.
+
+## Startup and Execution 
