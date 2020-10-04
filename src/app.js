@@ -36,7 +36,7 @@ function onConnectedHandler (addr, port) {
 
   // Authorize a client with the loaded credentials, then call the YouTube API.
   oauth2Client = init();
-  console.log('connected to Youtube Data API..');
+  console.log('connected to YouTube Data API..');
 }
 
 // invoked every time a message is received by the bot
@@ -45,12 +45,12 @@ function onMessageHandler (target, context, msg, self) {
 
   if (new RegExp(YOUTUBE_REGEX).test(msg)) {
     try {
-      // extract ID from Youtube link where id[1] is the vid ID
+      // extract ID from YouTube link where id[1] is the vid ID
       var id = msg.match(YOUTUBE_VID_ID_REGEX);
       fs.appendFile('output/youtube.list', `@${context.username} - ${id[0]}\n`, (err) => {
         if (err) throw err;
         console.log(`updated -> @${context.username} - ${id[1]}`);
-        // invoke Youtube Data API to add item to playlist
+        // invoke YouTube Data API to add item to playlist
         addToPlaylist(oauth2Client, id[1]);
       });
     } catch (err) {
