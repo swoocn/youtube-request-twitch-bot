@@ -10,12 +10,12 @@ Allow for reaction-based Twitch streamers to streamline YouTube requests to his/
 - Node JS/ Javascript
 - Google Cloud Platform
 
-## Prerequisites
+## Prerequisites and Setup
+#### Required accounts
 - Google Cloud Platform account 
 - Twitch account
 - YouTube account
 
-## Setup
 #### Get your Twitch OAuth token to call Twitch API & configure /const.js with Twitch account info.
 1. Register and log into [Twitch developer console](https://dev.twitch.tv/console/apps).
 2. Select the Applications tab, and click **+ Register Your Application**.

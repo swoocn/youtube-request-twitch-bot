@@ -11,37 +11,36 @@ var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
     process.env.USERPROFILE) + '/.credentials/';
 var TOKEN_PATH = TOKEN_DIR + 'youtube-nodejs-quickstart.json';
 
-export function init() {
+export var init = () => {
   // Load client secrets from a local file.
-  // TODO: may need to make file read async
   const content = fs.readFileSync('./resources/client_secret.json');
   return authorize(JSON.parse(content));
-}
+};
 
 /**
  * Create an OAuth2 client with the given credentials.
  */
-function authorize(credentials) {
+var authorize = (credentials) => {
   var clientId = credentials.installed.client_id;
-  var clientSecret = credentials.installed.client_secret;
-  var redirectUrl = credentials.installed.redirect_uris[0];
-  var oauth2Client = new OAuth2(clientId, clientSecret, redirectUrl);
+    var clientSecret = credentials.installed.client_secret;
+    var redirectUrl = credentials.installed.redirect_uris[0];
+    var oauth2Client = new OAuth2(clientId, clientSecret, redirectUrl);
 
-  // Check if we have previously stored a token.
-  fs.readFile(TOKEN_PATH, function(err, token) {
-    if (err) {
-      getNewToken(oauth2Client);
-    } else {
-      oauth2Client.credentials = JSON.parse(token);
-    }
-  });
-  return oauth2Client;
-}
+    // Check if we have previously stored a token.
+    fs.readFile(TOKEN_PATH, function(err, token) {
+      if (err) {
+        getNewToken(oauth2Client);
+      } else {
+        oauth2Client.credentials = JSON.parse(token);
+      }
+    });
+    return oauth2Client;
+};
 
 /**
  * Get and store new token after prompting for user authorization.
  */
-function getNewToken(oauth2Client) {
+var getNewToken = (oauth2Client) => {
   var authUrl = oauth2Client.generateAuthUrl({
     access_type: 'offline',
     scope: SCOPES
@@ -62,13 +61,13 @@ function getNewToken(oauth2Client) {
       storeToken(token);
     });
   });
-}
+};
 
 /**
  * Store token to disk be used in later program executions.
  * @param {Object} token The token to store to disk.
  */
-function storeToken(token) {
+var storeToken = (token) => {
   try {
     fs.mkdirSync(TOKEN_DIR);
   } catch (err) {
@@ -80,13 +79,13 @@ function storeToken(token) {
     if (err) throw err;
     console.log('Token stored to ' + TOKEN_PATH);
   });
-}
+};
 
 /**
- * Retrieve a user's playlist.
+ * Retrieve a user's YouTube playlist.
  * Determine playlistId if unknown to use for addToPlaylist(..).
  */
-//function fetchPlaylist(auth) {
+export var fetchPlaylist = (auth) => {
 //  var service = google.youtube('v3');
 //  service.playlists.list({
 //    auth: auth,
@@ -104,12 +103,12 @@ function storeToken(token) {
 //      console.log(response.data.items[0].id);
 //    }
 //  });
-//}
+//};
 
 /**
- * Add playlist item to a user's playlist.
+ * Add YouTube playlist item to a user's YouTube playlist.
  */
-export async function addToPlaylist(auth, id) {
+export var addToPlaylist = async (auth, id) => {
   var service = google.youtube('v3');
   try {
     var response = await service.playlistItems.insert({
@@ -128,4 +127,4 @@ export async function addToPlaylist(auth, id) {
   } catch (err) {
       console.log(`The API returned the response: ${response.status}; -> ${err}`);
   }
-}
+};
