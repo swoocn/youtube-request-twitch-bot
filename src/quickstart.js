@@ -85,7 +85,7 @@ var storeToken = (token) => {
  * Retrieve a user's YouTube playlist.
  * Determine playlistId if unknown to use for addToPlaylist(..).
  */
-export var fetchPlaylist = (auth) => {
+//export var fetchPlaylist = (auth) => {
 //  var service = google.youtube('v3');
 //  service.playlists.list({
 //    auth: auth,
