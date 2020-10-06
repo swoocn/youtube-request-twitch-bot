@@ -28,13 +28,16 @@ client.connect();
 
 // invoked every time bot connects to Twitch chat
 client.on("connected", (addr, port) => {
-    client.say(options.channels[0], 'swoocn override - [youtube-request-twitch-bot] initiated for testing..');
-    // client.ws.on('message', data => console.log(data));
-    console.log(`[youtube-request-twitch-bot initiated] - connected to ${addr}:${port}`);
-    // authorize a client with the loaded credentials, then call the YouTube API.
-    oauth2Client = init();
-    console.log(`${oauth2Client}`);
-    console.log('connected to YouTube Data API..');
+    try {
+      client.say(options.channels[0], 'swoocn override - [youtube-request-twitch-bot] initiated for testing..');
+      // client.ws.on('message', data => console.log(data));
+      console.log(`[youtube-request-twitch-bot initiated] - connected to ${addr}:${port}`);
+      // authorize a client with the loaded credentials, then call the YouTube API.
+      oauth2Client = init();
+      console.log('connected to YouTube Data API..');
+    } catch (err) {
+      console.log(`unable to process connect; -> ${err}`);
+    }
 });
 
 // invoked every time a message is received by the bot
@@ -52,7 +55,7 @@ client.on("message", (target, context, msg, self) => {
         addToPlaylist(oauth2Client, id[1]);
       });
     } catch (err) {
-      console.log(`unable to process: ${msg}; -> ${err}`);
+      console.log(`unable to process message: ${msg}; -> ${err}`);
     }
   }
 });

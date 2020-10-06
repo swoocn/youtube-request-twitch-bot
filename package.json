@@ -9,6 +9,10 @@
   },
   "author": "swoocn",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swoocn/youtube-request-twitch-bot.git"
+  },
   "dependencies": {
     "es6": "0.0.7",
     "esm": "^3.2.25",
