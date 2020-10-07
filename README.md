@@ -48,3 +48,17 @@ Allow for reaction-based Twitch streamers to streamline YouTube requests to his/
 3. Follow the instructions, and then copy-and-paste the generated code back into the command prompt.
 
 ## Startup and Execution 
+1. Overwrite the `playlistId` in the /quickstart.js:: `addToPlaylist` with YouTube playlist under your account; retrieve playlistId from the URL. 
+2. Initiate Twitch chat stream associated with Twitch OAuth token setup.
+3. Run the application with 'npm start'.
+4. Verify Twitch and Youtube connection in console, and bot message initiated in Twitch chat.
+    ###### _command 'npm start' will fire up the bot; console logging reveals connection status to Twitch chat stream and YouTube Data API; a welcome message from the bot will be sent to the Twitch chat box._
+    <img src="https://user-images.githubusercontent.com/72060658/95268592-a0c42580-0805-11eb-9e18-41116ca87ed4.jpg"></img>
+5. Send YouTube links to the Twitch chat box.
+6. Verify console logging of each YouTube link; invalid links will not be logged. 
+    ###### _request YouTube links to the Twitch chat stream; console logging reveals each valid YouTube link in the format @user - videoID._
+    <img src="https://user-images.githubusercontent.com/72060658/95281269-bbf25d80-0824-11eb-942a-c49e39cbf5e1.jpg"></img> 
+7. Verify /output/youtube.list for additional info of each YouTube link request.
+8. Verify items added to the YouTube playlist associated with account and playlistId. 
+    ###### _youtube.list output will display each valid YouTube link in the format @user - youtubeURL; each YouTube link will be listed as a playlist item under the corresponding YouTube playlist._
+    <img src="https://user-images.githubusercontent.com/72060658/95283133-0544ac00-0829-11eb-8d9e-48af9ba285b5.jpg"></img>     
