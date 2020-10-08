@@ -1,6 +1,8 @@
 import fs from 'fs'
 import tmi from 'tmi.js'
+
 import { google } from 'googleapis'
+import { formatDate } from './utils'
 import { init, addToPlaylist } from './quickstart'
 import { BOT_USERNAME, OAUTH_TOKEN, CHANNEL_NAME, YOUTUBE_REGEX, YOUTUBE_VID_ID_REGEX } from './const'
 
@@ -48,14 +50,14 @@ client.on("message", (target, context, msg, self) => {
     try {
       // extract ID from YouTube link where id[1] is the vid ID
       var id = msg.match(YOUTUBE_VID_ID_REGEX);
-      fs.appendFile('output/youtube.list', `@${context.username} - ${id[0]}\n`, (err) => {
+      fs.appendFile('output/youtube.list', `[${formatDate(new Date())}]: @${context.username} - ${id[0]}\n`, (err) => {
         if (err) throw err;
         console.log(`updated -> @${context.username} - ${id[1]}`);
         // invoke YouTube Data API to add item to playlist
         addToPlaylist(oauth2Client, id[1]);
       });
     } catch (err) {
-      console.log(`unable to process message: ${msg}; -> ${err}`);
+        console.log(`unable to process message: ${msg}; -> ${err}`);
     }
   }
 });
