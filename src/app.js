@@ -4,7 +4,7 @@ import tmi from 'tmi.js'
 import { google } from 'googleapis'
 import { formatDate } from './utils'
 import { init, addToPlaylist } from './quickstart'
-import { BOT_USERNAME, OAUTH_TOKEN, CHANNEL_NAME, YOUTUBE_REGEX, YOUTUBE_VID_ID_REGEX } from './const'
+import { BOT_USERNAME, OAUTH_TOKEN, CHANNEL_NAME, YOUTUBE_REGEX, YOUTUBE_VID_ID_REGEX } from './constants'
 
 const options = {
   options: {

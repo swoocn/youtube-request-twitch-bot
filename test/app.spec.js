@@ -1,9 +1,6 @@
 import chai from 'chai'
 
-/* TODO: replace const with const import; currently unable due to
-   The requested module '../src/const.js' does not provide an export named 'YOUTUBE_REGEX'? */
-// import { YOUTUBE_REGEX } from '../src/const'
-const YOUTUBE_REGEX = /(?:youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|youtu\.be\/)([a-zA-Z0-9_-]{6,11})/g;
+import { YOUTUBE_REGEX } from '../src/constants'
 
 describe('YouTube link composition', () => {
 
