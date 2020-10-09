@@ -38,7 +38,7 @@ client.on("connected", (addr, port) => {
       oauth2Client = init();
       console.log('connected to YouTube Data API..');
     } catch (err) {
-      console.log(`unable to process connect; -> ${err}`);
+        console.log(`unable to process connect; -> ${err}`);
     }
 });
 
