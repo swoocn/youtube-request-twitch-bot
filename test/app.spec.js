@@ -1,6 +1,6 @@
 import chai from 'chai'
 
-import { YOUTUBE_REGEX } from '../src/constants'
+import { YOUTUBE_REGEX, YOUTUBE_VID_ID_REGEX } from '../src/constants'
 
 describe('YouTube link composition', () => {
 
@@ -49,6 +49,12 @@ describe('YouTube link composition', () => {
   it('should recognize invalid YouTube links', () => {
     invalidYouTubeLinks.forEach(link => {
       chai.assert.isFalse(new RegExp(YOUTUBE_REGEX).test(link), `${link} is not an invalid YouTube link.`);
+    })
+  });
+
+  it('should extract vid ID from valid YouTube links', () => {
+    validYouTubeLinks.forEach(validLink => {
+      chai.assert.isNotNull(validLink.match(YOUTUBE_VID_ID_REGEX), `${validLink} does not have a vid ID.`);
     })
   });
 
