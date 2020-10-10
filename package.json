@@ -5,7 +5,7 @@
   "main": "src",
   "scripts": {
     "start": "node .",
-    "test": "mocha \"test/*.spec.js\""
+    "test": "nyc --all mocha \"test/*.spec.js\""
   },
   "author": "swoocn",
   "license": "ISC",
@@ -28,6 +28,7 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/register": "^7.11.5",
     "chai": "^4.2.0",
-    "mocha": "^8.1.3"
+    "mocha": "^8.1.3",
+    "nyc": "^15.1.0"
   }
 }
