@@ -35,8 +35,8 @@ client.on("connected", (addr, port) => {
       // client.ws.on('message', data => console.log(data));
       console.log(`[youtube-request-twitch-bot initiated] - connected to ${addr}:${port}`);
       // authorize a client with the loaded credentials, then call the YouTube API.
-      oauth2Client = init();
-      console.log('connected to YouTube Data API..');
+      //oauth2Client = init();
+      //console.log('connected to YouTube Data API..');
     } catch (err) {
         console.log(`unable to process connect; -> ${err}`);
     }
@@ -50,11 +50,11 @@ client.on("message", (target, context, msg, self) => {
     try {
       // extract ID from YouTube link where id[1] is the vid ID
       var id = msg.match(YOUTUBE_VID_ID_REGEX);
-      fs.appendFile('output/youtube.list', `[${formatDate(new Date())}]: @${context.username} - ${id[0]}\n`, (err) => {
+      fs.appendFile('output/youtube_delim.list', `[${formatDate(new Date())}] | @${context.username} | ${id[0]}\n`, (err) => {
         if (err) throw err;
         console.log(`updated -> @${context.username} - ${id[1]}`);
         // invoke YouTube Data API to add item to playlist
-        addToPlaylist(oauth2Client, id[1]);
+        //addToPlaylist(oauth2Client, id[1]);
       });
     } catch (err) {
         console.log(`unable to process message: ${msg}; -> ${err}`);
